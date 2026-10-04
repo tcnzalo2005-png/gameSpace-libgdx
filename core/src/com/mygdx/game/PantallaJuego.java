@@ -47,14 +47,14 @@ public class PantallaJuego implements Screen {
 		//inicializar assets; musica de fondo y efectos de sonido
 		explosionSound = Gdx.audio.newSound(Gdx.files.internal("explosion.ogg"));
 		explosionSound.setVolume(1,0.5f);
-		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("piano-loops.wav")); //
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("Space-Invaders-PS1-OST-Pluto_004_48k.ogg")); //
 		
 		gameMusic.setLooping(true);
 		gameMusic.setVolume(0.5f);
 		gameMusic.play();
 		
 	    // cargar imagen de la nave, 64x64   
-	    nave = new Nave4(Gdx.graphics.getWidth()/2-50,30,new Texture(Gdx.files.internal("MainShip3.png")),
+	    nave = new Nave4(Gdx.graphics.getWidth()/2-50,30,new Texture(Gdx.files.internal("Space-Invaders.png")),
 	    				Gdx.audio.newSound(Gdx.files.internal("hurt.ogg")), 
 	    				new Texture(Gdx.files.internal("Rocket2.png")), 
 	    				Gdx.audio.newSound(Gdx.files.internal("pop-sound.mp3"))); 
@@ -90,10 +90,10 @@ public class PantallaJuego implements Screen {
 		            b.update();
 		            for (int j = 0; j < balls1.size(); j++) {    
 		              if (b.checkCollision(balls1.get(j))) {          
-		            	 explosionSound.play();
-		            	 balls1.remove(j);
-		            	 balls2.remove(j);
-		            	 j--;
+		            	  explosionSound.play(0.10f);
+		            	  balls1.remove(j);
+		            	  balls2.remove(j);
+			             j--;
 		            	 score +=10;
 		              }   	  
 		  	        }

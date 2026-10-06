@@ -94,7 +94,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="RzJ3R3lfoltN29DJzmEn-17" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Bullet" vertex="1">
-          <mxGeometry height="194" width="200" x="663" y="768.5" as="geometry" />
+          <mxGeometry height="194" width="200" x="640" y="800" as="geometry" />
         </mxCell>
         <mxCell id="RzJ3R3lfoltN29DJzmEn-18" parent="RzJ3R3lfoltN29DJzmEn-17" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- xSpeed: int&lt;div&gt;- ySpeed: int&lt;/div&gt;&lt;div&gt;- destroyed: boolean&lt;/div&gt;&lt;div&gt;- spr: Sprite&lt;/div&gt;" vertex="1">
           <mxGeometry height="74" width="200" y="26" as="geometry" />
@@ -109,7 +109,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="RzJ3R3lfoltN29DJzmEn-21" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Ball2" vertex="1">
-          <mxGeometry height="280" width="200" x="33" y="726" as="geometry" />
+          <mxGeometry height="280" width="200" x="40" y="800" as="geometry" />
         </mxCell>
         <mxCell id="RzJ3R3lfoltN29DJzmEn-22" parent="RzJ3R3lfoltN29DJzmEn-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- x: int&lt;div&gt;- y: int&lt;/div&gt;&lt;div&gt;- xSpeed: int&lt;/div&gt;&lt;div&gt;- ySpeed: int&lt;/div&gt;&lt;div&gt;- spr: Sprite&lt;/div&gt;" vertex="1">
           <mxGeometry height="86" width="200" y="26" as="geometry" />

@@ -27,9 +27,9 @@ public class PantallaJuego implements Screen {
 	private int cantAsteroides;
 	
 	private Nave4 nave;
-	private  ArrayList<Ball2> balls1 = new ArrayList<>();
-	private  ArrayList<Ball2> balls2 = new ArrayList<>();
-	private  ArrayList<Bullet> balas = new ArrayList<>();
+	private ArrayList<Ball2> balls1 = new ArrayList<>();
+	private ArrayList<Ball2> balls2 = new ArrayList<>();
+	private ArrayList<Bullet> balas = new ArrayList<>();
 
 
 	public PantallaJuego(SpaceNavigation game, int ronda, int vidas, int score,  

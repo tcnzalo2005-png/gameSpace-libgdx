@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 
 
 
@@ -111,6 +112,14 @@ public class Nave4 {
         }
         return false;
     }
+    public boolean checkCollision(Bullet b) {
+        if (this.getArea().overlaps(b.getArea())) {
+            // Lógica de daño a la nave cuando la impacta una bala
+            vidas--; // O la variable de vidas que manejes en Nave4
+            return true;
+        }
+        return false;
+    }
     
     public boolean estaDestruido() {
        return !herido && destruida;
@@ -124,4 +133,7 @@ public class Nave4 {
     public int getX() {return (int) spr.getX();}
     public int getY() {return (int) spr.getY();}
 	public void setVidas(int vidas2) {vidas = vidas2;}
+	public Rectangle getArea() {
+    	return spr.getBoundingRectangle();
+    }
 }

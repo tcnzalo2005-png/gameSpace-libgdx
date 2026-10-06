@@ -7,16 +7,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 
-public class Ball2 {
+public abstract class Ball2 {
 	private int x;
     private int y;
     private int xSpeed;
     private int ySpeed;
+    private int vidas;
     private Sprite spr;
 
-    public Ball2(int x, int y, int size, int xSpeed, int ySpeed, Texture tx) {
+    public Ball2(int x, int y, int size, int xSpeed, int ySpeed, Texture tx,int vidas) {
     	spr = new Sprite(tx);
+    	spr.setSize(45, 45);
     	this.x = x; 
+    	this.vidas = vidas;
  	
         //validar que borde de esfera no quede fuera
     	if (x-size < 0) this.x = x+size;
@@ -76,5 +79,16 @@ public class Ball2 {
 		this.ySpeed = ySpeed;
 	}
 	
-    
+    public void recibirDaño() {
+    	vidas--;
+    }
+    public boolean estaMuerto() {
+    	return vidas <= 0;
+    }
+    public int getx() {
+    	return x;
+    }
+    public int gety() {
+    	return y;
+    }
 }

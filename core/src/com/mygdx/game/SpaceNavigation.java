@@ -48,6 +48,6 @@ public class SpaceNavigation extends Game {
 		this.highScore = highScore;
 	}
 	
-	
+
 
 }

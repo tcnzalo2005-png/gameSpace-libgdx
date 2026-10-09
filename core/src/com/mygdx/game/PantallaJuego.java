@@ -83,15 +83,7 @@ public class PantallaJuego implements Screen {
 	    	}
 	    	balls1.add(e);
 	    	balls2.add(e);	
-	    	/*
-	        Ball2 bb = new Ball2(r.nextInt((int)Gdx.graphics.getWidth()),
-	  	            50+r.nextInt((int)Gdx.graphics.getHeight()-50),
-	  	            20+r.nextInt(10), velXAsteroides+r.nextInt(4), velYAsteroides+r.nextInt(4), 
-	  	            new Texture(Gdx.files.internal("aGreyMedium4.png")));	
-	  	       
-	  	    balls1.add(bb);
-	  	    balls2.add(bb);
-	  	    */
+
 	  	}
 	}
     
@@ -124,19 +116,15 @@ public class PantallaJuego implements Screen {
 		            			balls2.remove(j);
 		            			j--;
 		            			score+=10;
+		            			if(score > game.getHighScore()) {
+		            				game.setHighScore(score);
+		            			}
 		            		}
 		            		break;
-		            	}
-		              if (b.checkCollision(balls1.get(j))) {          
-		            	  explosionSound.play(0.10f);
-		            	  balls1.remove(j);
-		            	  balls2.remove(j);
-			             j--;
-		            	 score +=10;
-		              }   	  
+		            	}   	  
 		  	        }
 		                
-		         //   b.draw(batch);
+		         
 		            if (b.isDestroyed()) {
 		                balas.remove(b);
 		                i--; //para no saltarse 1 tras eliminar del arraylist
@@ -151,6 +139,7 @@ public class PantallaJuego implements Screen {
 		        	  if(t.debeDisparar(delta)) {
 		        		  Bullet balasCreada = new Bullet(t.getx(),t.gety(),0,-5,txBalaEnemiga);
 		        		  balasEnemigo.add(balasCreada);
+		        		  
 		        	  }
 		          }
 		          
@@ -165,29 +154,34 @@ public class PantallaJuego implements Screen {
 		     
 		          }
 		        }
-		      } 
+		      }
+		    //Renderizar, mover y procesar balas enemigas
+			     for (int i = 0; i < balasEnemigo.size(); i++) {
+						Bullet be = balasEnemigo.get(i);
+						be.update();
+						
+
+						// Colisión con la nave principal
+						if (nave.checkCollision(be)) { 
+							be.setDestruido(true);
+						}
+
+						if (be.isDestroyed()) {
+							balasEnemigo.remove(i);
+							i--;
+						}
+					}
 	      }
 	      //dibujar balas
 	     for (Bullet b : balas) {       
 	          b.draw(batch);
 	      }
 	     
-	     //Renderizar, mover y procesar balas enemigas
-	     for (int i = 0; i < balasEnemigo.size(); i++) {
-				Bullet be = balasEnemigo.get(i);
-				be.update();
-				be.draw(batch);
-
-				// Colisión con la nave principal
-				if (nave.checkCollision(be)) { 
-					be.setDestruido(true);
-				}
-
-				if (be.isDestroyed()) {
-					balasEnemigo.remove(i);
-					i--;
-				}
-			}
+	     for(Bullet b : balasEnemigo) {
+	    	 b.draw(batch);
+	     }
+	     
+	     
 	      nave.draw(batch, this);
 	      //dibujar asteroides y manejar colision con nave
 	      for (int i = 0; i < balls1.size(); i++) {

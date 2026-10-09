@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import java.util.Random;
 
 public class Tirador extends Ball2 {
 	private float timerDisparo=0;
@@ -14,6 +15,12 @@ public class Tirador extends Ball2 {
 		timerDisparo += delta;
 		if(timerDisparo >= tiempoEntreDisparos) {
 			timerDisparo = 0;
+			Random r = new Random();
+			if(r.nextBoolean()) {
+				tiempoEntreDisparos = 4.0f;
+			}else {
+				tiempoEntreDisparos = 1.5f;
+			}
 			return true;
 		}
 		return false;

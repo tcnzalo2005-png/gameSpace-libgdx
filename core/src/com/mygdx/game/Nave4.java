@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Nave4 {
 	
 	private boolean destruida = false;
-    private int vidas = 3;
+    private int vidas = 5;
     private float xVel = 0;
     private float yVel = 0;
     private Sprite spr;
@@ -45,19 +45,6 @@ public class Nave4 {
         	if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) yVel--;     
 	        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) yVel++;
         	
-	     /*   if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) spr.setRotation(++rotacion);
-	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) spr.setRotation(--rotacion);
-	        
-	        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-	        	xVel -=Math.sin(Math.toRadians(rotacion));
-	        	yVel +=Math.cos(Math.toRadians(rotacion));
-	        	System.out.println(rotacion+" - "+Math.sin(Math.toRadians(rotacion))+" - "+Math.cos(Math.toRadians(rotacion))) ;    
-	        }
-	        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-	        	xVel +=Math.sin(Math.toRadians(rotacion));
-	        	yVel -=Math.cos(Math.toRadians(rotacion));
-	        	     
-	        }*/
 	        
 	        // que se mantenga dentro de los bordes de la ventana
 	        if (x+xVel < 0 || x+xVel+spr.getWidth() > Gdx.graphics.getWidth())
@@ -115,7 +102,13 @@ public class Nave4 {
     public boolean checkCollision(Bullet b) {
         if (this.getArea().overlaps(b.getArea())) {
             // Lógica de daño a la nave cuando la impacta una bala
-            vidas--; // O la variable de vidas que manejes en Nave4
+            vidas--; 	
+            herido = true;
+            tiempoHerido = tiempoHeridoMax;
+            sonidoHerido.play();
+            if(vidas <= 0) {
+            	destruida = true;
+            }
             return true;
         }
         return false;

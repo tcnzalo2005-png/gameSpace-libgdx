@@ -17,6 +17,7 @@ public class Nave4 {
     private int vidas = 5;
     private float xVel = 0;
     private float yVel = 0;
+    private float vel = 3f;
     private Sprite spr;
     private Sound sonidoHerido;
     private Sound soundBala;
@@ -35,15 +36,15 @@ public class Nave4 {
     	spr.setBounds(x, y, 45, 45);
 
     }
-    public void draw(SpriteBatch batch, PantallaJuego juego){
+    public void draw(SpriteBatch batch, MundoJuego juego){
         float x =  spr.getX();
         float y =  spr.getY();
         if (!herido) {
 	        // que se mueva con teclado
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) xVel--;
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) xVel++;
-        	if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) yVel--;     
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) yVel++;
+	        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) xVel = -vel;
+	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) xVel = vel;
+        	if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) yVel = -vel;     
+	        if (Gdx.input.isKeyPressed(Input.Keys.UP)) yVel = vel;
         	
 	        
 	        // que se mantenga dentro de los bordes de la ventana
@@ -71,7 +72,7 @@ public class Nave4 {
        
     }
       
-    public boolean checkCollision(Ball2 b) {
+    public boolean checkCollision(Enemigos b) {
         if(!herido && b.getArea().overlaps(spr.getBoundingRectangle())){
         	// rebote
             if (xVel ==0) xVel += b.getXSpeed()/2;

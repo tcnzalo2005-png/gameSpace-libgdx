@@ -3,7 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.Texture;
 import java.util.Random;
 
-public class Tirador extends Ball2 {
+public class Tirador extends Enemigos {
 	private float timerDisparo=0;
 	private float tiempoEntreDisparos = 2.5f;
 

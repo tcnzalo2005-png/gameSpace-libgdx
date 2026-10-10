@@ -6,8 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-
-public abstract class Ball2 {
+public class Enemigos {
 	private int x;
     private int y;
     private int xSpeed;
@@ -15,7 +14,7 @@ public abstract class Ball2 {
     private int vidas;
     private Sprite spr;
 
-    public Ball2(int x, int y, int size, int xSpeed, int ySpeed, Texture tx,int vidas) {
+    public Enemigos(int x, int y, int size, int xSpeed, int ySpeed, Texture tx,int vidas) {
     	spr = new Sprite(tx);
     	spr.setSize(45, 45);
     	this.x = x; 
@@ -52,7 +51,7 @@ public abstract class Ball2 {
     	spr.draw(batch);
     }
     
-    public void checkCollision(Ball2 b2) {
+    public void checkCollision(Enemigos b2) {
         if(spr.getBoundingRectangle().overlaps(b2.spr.getBoundingRectangle())){
         	// rebote
             if (getXSpeed() ==0) setXSpeed(getXSpeed() + b2.getXSpeed()/2);
@@ -79,7 +78,7 @@ public abstract class Ball2 {
 		this.ySpeed = ySpeed;
 	}
 	
-    public void recibirDaño() {
+    public void recibirDanio() {
     	vidas--;
     }
     public boolean estaMuerto() {

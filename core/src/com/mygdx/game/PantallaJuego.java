@@ -60,8 +60,8 @@ public class PantallaJuego implements Screen {
 		CharSequence str = "Vidas: "+mundoJuego.nave4().getVidas()+" Ronda: "+mundoJuego.getRondas();
 		SpaceNavigation.getInstance().getFont().getData().setScale(2f);
 		SpaceNavigation.getInstance().getFont().draw(batch, str, 10, 30);
-		SpaceNavigation.getInstance().getFont().draw(batch, "Score:"+mundoJuego.getScore(), Gdx.graphics.getWidth()-150, 30);
-		SpaceNavigation.getInstance().getFont().draw(batch, "HighScore:"+SpaceNavigation.getInstance().getHighScore(), Gdx.graphics.getWidth()/2-100, 30);
+		SpaceNavigation.getInstance().getFont().draw(batch, "Score:"+mundoJuego.getScore(),280, 30);
+		SpaceNavigation.getInstance().getFont().draw(batch, "HighScore:"+SpaceNavigation.getInstance().getHighScore(), 420, 30);
 	}
 
 	@Override

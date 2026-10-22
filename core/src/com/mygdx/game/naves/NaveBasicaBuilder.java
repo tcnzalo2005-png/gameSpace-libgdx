@@ -20,16 +20,30 @@ public class NaveBasicaBuilder implements NaveBuilder {
     private EstrategiaImpactoBala impactoBala = new ImpactoNormal();                // bala se destruye al golpear
 
     // Cada paso guarda el valor y devuelve this para poder encadenar llamadas
-    @Override public NaveBuilder posicion(int x, int y) { this.x = x; this.y = y; return this; }
-    @Override public NaveBuilder sprite(Texture tx) { this.tx = tx; return this; }
-    @Override public NaveBuilder sonidoHerido(Sound s) { this.sonidoHerido = s; return this; }
+    @Override 
+    public NaveBuilder posicion(int x, int y) { 
+    	this.x = x; this.y = y; return this; }
+    @Override 
+    public NaveBuilder sprite(Texture tx) { 
+    	this.tx = tx; return this; }
+    @Override 
+    public NaveBuilder sonidoHerido(Sound s) { 
+    	this.sonidoHerido = s; return this; }
     @Override public NaveBuilder bala(Texture txBala, Sound soundBala) {
         this.txBala = txBala; this.soundBala = soundBala; return this;
     }
-    @Override public NaveBuilder estrategiaDisparo(EstrategiaMovimientoBala e) { this.movimientoBala = e; return this; }
-    @Override public NaveBuilder vidas(int v) { this.vidas = v; return this; }
-    @Override public NaveBuilder velocidad(float v) { this.velocidad = v; return this; }
-    @Override public NaveBuilder tiempoHeridoMax(int t) { this.tiempoHeridoMax = t; return this; }
+    @Override 
+    public NaveBuilder estrategiaDisparo(EstrategiaMovimientoBala e) { 
+    	this.movimientoBala = e; return this; }
+    @Override 
+    public NaveBuilder vidas(int v) { 
+    	this.vidas = v; return this; }
+    @Override 
+    public NaveBuilder velocidad(float v) { 
+    	this.velocidad = v; return this; }
+    @Override 
+    public NaveBuilder tiempoHeridoMax(int t) { 
+    	this.tiempoHeridoMax = t; return this; }
 
     // Crea la nave con todo lo configurado
     @Override

@@ -30,6 +30,10 @@ public class PowerUp {
         }
     }
 	
-	public boolean isRecolectado() { return recolectado; }
-    public Rectangle getArea() { return spr.getBoundingRectangle(); }
+	public boolean isRecolectado() { 
+		return recolectado; 
+		}
+    public Rectangle getArea() { 
+    	return spr.getBoundingRectangle(); 
+    	}
 }

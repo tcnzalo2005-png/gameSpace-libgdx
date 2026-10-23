@@ -27,8 +27,11 @@ public class Nave4 {
     private int tiempoHeridoMax;
     private int tiempoHerido;
     private float velocidad;
+
     private EstrategiaMovimientoBala movimientoBala;
     private EstrategiaImpactoBala impactoBala;
+    private EstrategiaImpactoBala impactoBalaNormal;
+    private float tiempoBalaPerforante = 0f;
 
     public Nave4(int x, int y, Texture tx, Sound soundChoque, Texture txBala, Sound soundBala,
                  int vidas, float velocidad, int tiempoHeridoMax,
@@ -41,6 +44,7 @@ public class Nave4 {
         this.tiempoHeridoMax = tiempoHeridoMax;
         this.movimientoBala = movimientoBala;
         this.impactoBala = impactoBala;
+        this.impactoBalaNormal = impactoBala;
         spr = new Sprite(tx);
         spr.setBounds(x, y, 45, 45);
     }
@@ -49,6 +53,9 @@ public class Nave4 {
         float x = spr.getX();
         float y = spr.getY();
         float vel = velocidad * Gdx.graphics.getDeltaTime();          // <-- cambiado
+
+        actualizarEfectos(Gdx.graphics.getDeltaTime());
+
         if (!herido) {
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) x -= vel;
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) x += vel;
@@ -116,6 +123,26 @@ public class Nave4 {
         return false;
     }
 
+    public void activarBalaPerforante(float duracion)
+    {
+        impactoBala = new ImpactoPerforante();
+        tiempoBalaPerforante = duracion;
+    }
+
+    private void actualizarEfectos(float delta)
+    {
+        if(tiempoBalaPerforante > 0f)
+        {
+            tiempoBalaPerforante -= delta;
+            
+            if(tiempoBalaPerforante <= 0f)
+            {
+                tiempoBalaPerforante = 0f;
+                impactoBala = impactoBalaNormal;
+            }
+        }
+    }
+
     public boolean estaDestruido() { return !herido && destruida; }
     public boolean estaHerido() { return herido; }
 
@@ -130,5 +157,13 @@ public class Nave4 {
     }
     public void setDanio(int d) {
     	danio = d;
+    }
+
+    public void setImpactoBala(EstrategiaImpactoBala impactoBala) {
+        this.impactoBala = impactoBala;
+    }
+
+    public void setMovimientoBala(EstrategiaMovimientoBala movimientoBala) {
+        this.movimientoBala = movimientoBala;
     }
 }

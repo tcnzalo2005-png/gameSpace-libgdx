@@ -10,6 +10,7 @@ import com.mygdx.game.PowerUps.Curacion;
 import com.mygdx.game.PowerUps.Danio;
 import com.mygdx.game.PowerUps.PowerUp;
 import com.mygdx.game.PowerUps.PowerUpsEffecto;
+import com.mygdx.game.PowerUps.BalaPerforante;
 import com.mygdx.game.disparos.*;
 import com.mygdx.game.naves.*;
 
@@ -244,16 +245,25 @@ public class MundoJuego
 	    PowerUpsEffecto efecto;
 	    String claveTextura;
 
-	    // 50% de probabilidad de que sea curaciï¿½n o aumento de daï¿½o
-	    if (randomSpawn.nextBoolean()) {
-	        efecto = new Curacion();
-	        claveTextura = "Curacion"; // Asegï¿½rate de tener esta textura cargada
-	    } else {
-	        efecto = new Danio();
-	        claveTextura = "Danio";   // Asegï¿½rate de tener esta textura cargada
-	    }
+		int tipo = randomSpawn.nextInt(3);
 
-	    // Creamos el power-up y se añade a la lista
+	    /* 1/3 de probabilidad en cada powerUp */
+	    if (tipo == 0) {
+	        efecto = new Curacion();
+	        claveTextura = "Curacion";
+	    }
+		else if(tipo == 1)
+		{
+	        efecto = new Danio();
+	        claveTextura = "Danio";
+	    }
+		else
+		{
+			efecto = new BalaPerforante();
+			claveTextura = "BalaPerforante"
+		}
+
+	    // Creamos el power-up y se aniade a la lista
 	    PowerUp nuevoPowerUp = new PowerUp(x, y, texturas.get(claveTextura), efecto);
 	    agregarPowerUp(nuevoPowerUp);
 	}

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Enemigos
+public abstract class Enemigos
 {
 	private int x;
     private int y;
@@ -14,7 +14,7 @@ public class Enemigos
     private int vidas;
     private Sprite spr;
 
-    public Enemigos(int x, int y, int size, int xSpeed, int ySpeed, Texture tx,int vidas) {
+    protected Enemigos(int x, int y, int size, int xSpeed, int ySpeed, Texture tx,int vidas) {
     	spr = new Sprite(tx);
     	spr.setSize(45, 45);
     	this.x = x; 
@@ -36,23 +36,35 @@ public class Enemigos
         this.setXSpeed(xSpeed);
         this.setySpeed(ySpeed);
     }
-    public void update() {
-        x += getXSpeed();
-        y += getySpeed();
+    /**
+     * METODO PLANTILLA (Template Method).
+     * Define el esqueleto fijo de la actualizacion de un enemigo:
+     *   1. moverse()          -> paso VARIABLE (cada subclase lo implementa)
+     *   2. rebotarEnBordes()  -> paso COMUN (hook, se puede sobreescribir)
+     *   3. actualizar sprite  -> paso COMUN
+     * Es final para que las subclases no alteren el orden de los pasos.
+     */
+    public final void update() {
+        moverse();
+        rebotarEnBordes();
+        spr.setPosition(x, y);
+    }
 
-        /*
-        if (x+getXSpeed() < 0 || x+getXSpeed()+spr.getWidth() > Gdx.graphics.getWidth())
-        	setXSpeed(getXSpeed() * -1);
-        if (y+getySpeed() < 0 || y+getySpeed()+spr.getHeight() > Gdx.graphics.getHeight())
-        	setySpeed(getySpeed() * -1);*/
-        
+    /** Paso variable: cada tipo de enemigo define su patron de movimiento. */
+    protected abstract void moverse();
+
+    /** Paso comun con implementacion por defecto: rebote contra los bordes del mapa. */
+    protected void rebotarEnBordes() {
         if (x+getXSpeed() < 0 || x+getXSpeed()+spr.getWidth() > 1200)
         	setXSpeed(getXSpeed() * -1);
         if (y+getySpeed() < 0 || y+getySpeed()+spr.getHeight() > 800)
         	setySpeed(getySpeed() * -1);
-        spr.setPosition(x, y);
     }
-    
+
+    // Acceso para que las subclases modifiquen la posicion dentro de moverse()
+    protected void setx(int x) { this.x = x; }
+    protected void sety(int y) { this.y = y; }
+
     public Rectangle getArea() {
     	return spr.getBoundingRectangle();
     }
@@ -101,6 +113,7 @@ public class Enemigos
     }
     
     
+    /** Hook: por defecto los enemigos no disparan; las subclases pueden sobreescribirlo. */
     public boolean debeDisparar(float delta) {
     	return false;
     }

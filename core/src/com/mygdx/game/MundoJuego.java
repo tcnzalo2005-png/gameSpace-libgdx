@@ -260,7 +260,7 @@ public class MundoJuego
 		else
 		{
 			efecto = new BalaPerforante();
-			claveTextura = "BalaPerforante"
+			claveTextura = "BalaPerforante";
 		}
 
 	    // Creamos el power-up y se aniade a la lista

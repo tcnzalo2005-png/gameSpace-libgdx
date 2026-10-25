@@ -2,6 +2,11 @@
 
 Videojuego de estilo *Space Invaders* desarrollado en Java utilizando el framework **libGDX**. El jugador controla una nave espacial, combate contra distintos tipos de enemigos, recoge mejoras y avanza por rondas mientras intenta superar su puntuación máxima.
 
+# Autores 
+- **Nicolas Castellano**
+- **Nicolas Caniguante**
+- **Bejamin chonca**
+- **Lucas Salamanca** 
 ## Características
 
 - **Combate espacial:** movimiento de la nave, disparos y colisiones con enemigos y proyectiles.

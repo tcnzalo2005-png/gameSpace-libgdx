@@ -15,12 +15,17 @@ public class SpaceNavigation extends Game {
 	private int highScore;	
 	private static  SpaceNavigation instance;	
 	
-	public SpaceNavigation() {
-		instance = this;
+	private SpaceNavigation() {
+        if (instance != null) {
+            throw new IllegalStateException("¡Ya existe una instancia de SpaceNavigation!");
+        }
 	}
 	
 	public static SpaceNavigation getInstance() {
-		return instance;
+		if (instance == null) {
+            instance = new SpaceNavigation();
+        }
+        return instance;
 	}
 	
 	public void create() {

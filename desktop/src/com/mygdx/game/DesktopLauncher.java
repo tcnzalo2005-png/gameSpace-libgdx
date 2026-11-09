@@ -15,6 +15,6 @@ public class DesktopLauncher
 		config.setTitle("GameSpace");	/* Titulo de ventana */
 
 		/* Arrancar el juego */
-		new Lwjgl3Application(new SpaceNavigation(), config);
+		new Lwjgl3Application(SpaceNavigation.getInstance(), config);
 	}
 }
